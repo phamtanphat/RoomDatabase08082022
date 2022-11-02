@@ -8,6 +8,7 @@ import com.example.roomdatabase08082022.data.local.entity.TodoEntity;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 
 /**
@@ -23,5 +24,9 @@ public class TodoRepository {
 
     public Observable<List<TodoEntity>> getTodos() {
         return todoDao.getTodoEntity();
+    }
+
+    public Completable insertTodo(TodoEntity todoEntity) {
+        return todoDao.insertTodoEntity(todoEntity);
     }
 }
