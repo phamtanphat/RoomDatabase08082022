@@ -60,7 +60,25 @@ public class MainViewModel extends ViewModel {
     }
 
     public void insertTodoEntity(TodoEntity todoEntity) {
-        todoRepository.insertTodo(todoEntity);
+        todoRepository.insertTodo(todoEntity)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
     }
 
     public void deleteTodoEntity(int id) {

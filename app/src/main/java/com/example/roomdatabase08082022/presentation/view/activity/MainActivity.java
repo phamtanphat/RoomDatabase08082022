@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void event() {
         mainViewModel.selectAllTodoEntity();
-        mainViewModel.updateTodoEntity("Title update", 1);
+        for (int i = 0; i < 10; i++) {
+            mainViewModel.insertTodoEntity(new TodoEntity("Title " + i, "Description " + i));
+        }
     }
 
     private void observerData() {
