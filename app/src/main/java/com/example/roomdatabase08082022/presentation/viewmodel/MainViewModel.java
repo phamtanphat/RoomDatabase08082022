@@ -60,7 +60,11 @@ public class MainViewModel extends ViewModel {
     }
 
     public void insertTodoEntity(TodoEntity todoEntity) {
-        todoRepository.insertTodo(todoEntity)
+        todoRepository.insertTodo(todoEntity);
+    }
+
+    public void deleteTodoEntity(int id) {
+        todoRepository.deleteTodo(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {
@@ -71,7 +75,29 @@ public class MainViewModel extends ViewModel {
 
                     @Override
                     public void onComplete() {
-                        Log.d("BBB", "Hoàn tất");
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
+    }
+
+    public void updateTodoEntity(String title, int id) {
+        todoRepository.updateTodo(title, id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
 
                     @Override

@@ -29,4 +29,12 @@ public class TodoRepository {
     public Completable insertTodo(TodoEntity todoEntity) {
         return todoDao.insertTodoEntity(todoEntity);
     }
+
+    public Completable deleteTodo(int id) {
+        return todoDao.deleteTodoEntity(id);
+    }
+
+    public Completable updateTodo(String title, int id) {
+        return todoDao.updateTodoEntity(title, id);
+    }
 }

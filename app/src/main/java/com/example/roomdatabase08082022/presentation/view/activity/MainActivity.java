@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import com.example.roomdatabase08082022.R;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void event() {
         mainViewModel.selectAllTodoEntity();
-        mainViewModel.insertTodoEntity(new TodoEntity("Do something 2","Description 2"));
+        mainViewModel.updateTodoEntity("Title update", 1);
     }
 
     private void observerData() {
@@ -45,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<TodoEntity> todoEntities) {
                 if (todoEntities != null){
-                    Log.d("BBB", todoEntities.size() + "");
+                    for (int i = 0; i < todoEntities.size(); i++) {
+                        Log.d("BBB", todoEntities.get(i).toString());
+                    }
+
                 }
             }
         });

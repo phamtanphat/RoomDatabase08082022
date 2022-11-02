@@ -1,8 +1,10 @@
 package com.example.roomdatabase08082022.data.local;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.roomdatabase08082022.data.local.entity.TodoEntity;
 
@@ -23,4 +25,10 @@ public interface TodoDao {
 
     @Insert
     Completable insertTodoEntity(TodoEntity todoEntity);
+
+    @Query("DELETE FROM todo WHERE id = :id")
+    Completable deleteTodoEntity(int id);
+
+    @Query("UPDATE todo SET title=:title WHERE id = :id")
+    Completable updateTodoEntity(String title, int id);
 }
