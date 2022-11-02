@@ -14,7 +14,6 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -23,11 +22,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
  */
 public class MainViewModel extends ViewModel {
     private MutableLiveData<List<TodoEntity>> listTodoLiveData = new MutableLiveData<>();
-    private Context context;
     private TodoRepository todoRepository;
 
     public MainViewModel(Context context) {
-        this.context = context;
         todoRepository = new TodoRepository(context);
     }
 
